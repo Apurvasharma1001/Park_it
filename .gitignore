@@ -1,0 +1,148 @@
+# ===========================
+# SMART PARKING SYSTEM
+# Consolidated .gitignore
+# ===========================
+
+# ===========================
+# Dependencies
+# ===========================
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+*.egg
+MANIFEST
+.installed.cfg
+
+# ===========================
+# Virtual Environments
+# ===========================
+venv/
+.venv/
+env/
+ENV/
+server/opencv_service/venv/
+server/opencv_service/env/
+
+# ===========================
+# Environment Variables
+# ===========================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+client/.env
+
+# ===========================
+# Build & Production
+# ===========================
+build/
+dist/
+dist-ssr/
+client/dist/
+client/build/
+server/dist/
+coverage/
+
+# ===========================
+# Logs
+# ===========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# ===========================
+# Editor & IDE
+# ===========================
+.idea/
+.vscode/
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+*~
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===========================
+# OpenCV Service Specific
+# ===========================
+server/opencv_service/__pycache__/
+server/opencv_service/runs/
+server/opencv_service/*.weights
+server/opencv_service/*.pt
+!server/opencv_service/models/*.pt  # Allow YOLO model files
+server/opencv_service/**/*.jpg
+server/opencv_service/**/*.jpeg
+server/opencv_service/**/*.png
+server/opencv_service/**/*.bmp
+server/opencv_service/slots.json
+server/opencv_service/*.json.bak
+
+# ===========================
+# Temporary & Diagnostic Files
+# ===========================
+*.tmp
+*.bak
+*.swp
+*.swo
+server/mongo-diagnostic.txt
+server/test-mongo-connection.js
+
+# ===========================
+# Media Files (large)
+# ===========================
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+
+# ===========================
+# Database Files
+# ===========================
+*.sqlite
+*.sqlite3
+*.db
+
+# ===========================
+# Local Development
+# ===========================
+*.local
