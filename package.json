@@ -1,0 +1,20 @@
+{
+  "name": "smart-parking-system",
+  "version": "1.0.0",
+  "description": "Smart Parking System - Full Stack Application",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev:all": "concurrently -n \"BACKEND,FRONTEND,OPENCV\" -c \"blue,green,yellow\" \"npm run server\" \"npm run client\" \"npm run opencv\"",
+    "start:all": "concurrently -n \"BACKEND,FRONTEND,OPENCV\" -c \"blue,green,yellow\" \"npm run server\" \"npm run client\" \"npm run opencv\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "opencv": "cd server/opencv_service && (if exist venv\\Scripts\\python.exe (venv\\Scripts\\python.exe service.py) else python service.py)",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "mongodb": "4.1"
+  }
+}
