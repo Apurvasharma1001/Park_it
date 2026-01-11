@@ -11,6 +11,10 @@ A **full-stack, location-aware parking management system** that enables **parkin
 The system optionally supports **camera-based occupancy detection using classical OpenCV techniques**, designed to work **without expensive sensors or heavy AI infrastructure**.
 
 ---
+## 🌐 Live Demo
+
+Access the deployed application here:  
+👉 **https://smart-parking-system-sandy.vercel.app/**
 
 ## 🎯 Problem Statement
 
