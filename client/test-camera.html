@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Test</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #video-container {
+            margin: 20px 0;
+            background: black;
+            min-height: 480px;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #333;
+        }
+
+        .error {
+            color: red;
+            padding: 10px;
+            background: #ffe6e6;
+            border: 1px solid red;
+            margin: 10px 0;
+            display: none;
+        }
+
+        .success {
+            color: green;
+            padding: 10px;
+            background: #e6ffe6;
+            border: 1px solid green;
+            margin: 10px 0;
+            display: none;
+        }
+
+        .info {
+            background: #e6f3ff;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #0066cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📸 Isolated Camera Test</h1>
+        <div class="info">
+            <p><strong>Browser Status:</strong></p>
+            <ul id="status-list">
+                <li id="secure-check">Checking Secure Context...</li>
+                <li id="api-check">Checking getUserMedia API...</li>
+            </ul>
+        </div>
+
+        <div id="error-box" class="error"></div>
+        <div id="success-box" class="success">Camera connected successfully!</div>
+
+        <div id="video-container">
+            <video id="videoElement" autoplay playsinline muted></video>
+        </div>
+
+        <button onclick="startCamera()"
+            style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px;">Start
+            Camera</button>
+    </div>
+
+    <script>
+        const errorBox = document.getElementById('error-box');
+        const successBox = document.getElementById('success-box');
+        const video = document.getElementById('videoElement');
+        const secureCheck = document.getElementById('secure-check');
+        const apiCheck = document.getElementById('api-check');
+
+        // Check Secure Context
+        if (window.isSecureContext) {
+            secureCheck.innerHTML = "✅ Secure Context (HTTPS or localhost) - OK";
+            secureCheck.style.color = "green";
+        } else {
+            secureCheck.innerHTML = "❌ NOT Secure Context! Camera will fail.";
+            secureCheck.style.color = "red";
+        }
+
+        // Check API Support
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            apiCheck.innerHTML = "✅ navigator.mediaDevices.getUserMedia - Supported";
+            apiCheck.style.color = "green";
+        } else {
+            apiCheck.innerHTML = "❌ navigator.mediaDevices.getUserMedia - NOT SUPPORTED";
+            apiCheck.style.color = "red";
+        }
+
+        async function startCamera() {
+            try {
+                errorBox.style.display = 'none';
+                successBox.style.display = 'none';
+                console.log("Requesting camera...");
+
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: true
+                });
+
+                console.log("Stream received", stream);
+                video.srcObject = stream;
+                successBox.style.display = 'block';
+                successBox.innerText = `Camera Connected! Video Tracks: ${stream.getVideoTracks().length}`;
+
+                video.onloadedmetadata = () => {
+                    console.log("Metadata loaded");
+                    video.play();
+                };
+            } catch (err) {
+                console.error(err);
+                errorBox.style.display = 'block';
+                errorBox.innerHTML = `<strong>Error:</strong> ${err.name}: ${err.message}<br><small>${err.stack}</small>`;
+            }
+        }
+    </script>
+</body>
+
+</html>
