@@ -17,7 +17,7 @@ Access the deployed application here:
 👉 **https://smart-parking-system-sandy.vercel.app/**
 
 🎥 **Demo Video**:  
-👉 [https://youtu.be/XXXXXXXX](https://youtu.be/dFfEQskQY7U)
+👉 https://youtu.be/dFfEQskQY7U
 
 ## 🎯 Problem Statement
 
