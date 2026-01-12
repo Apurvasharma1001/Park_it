@@ -16,6 +16,9 @@ The system optionally supports **camera-based occupancy detection using classica
 Access the deployed application here:  
 👉 **https://smart-parking-system-sandy.vercel.app/**
 
+🎥 **Demo Video**:  
+👉 https://youtu.be/XXXXXXXX
+
 ## 🎯 Problem Statement
 
 Urban and semi-urban parking faces multiple inefficiencies:
